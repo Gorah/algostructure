@@ -1,33 +1,85 @@
 package quickSort;
 
-import java.util.ArrayList;
-
-
-
 public class QuickSort {
+	static int[] arr = {3,1,2,5,0,9};
 
-	public static void quickS(ArrayList<Integer> arr){
-		int start=0, middle, last;
-		Integer val;
+	public static void swap(int i, int j){
+		int temp = arr[i];
 		
-		last = arr.size() -1;
-		middle = (start + last)/2;
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	
+	public static void quickS(int low, int last){
+		int i , j, middle, val;
 		
-		val = arr.get(middle);
-		arr.remove(middle);
+		middle = (low + last)/2;
+		
+		val = arr[middle];
+		i = low;
+		j = last;
+		
+		while (i <= j) {
+			while(arr[i] < val){
+				i++;
+			}
+
+			while(arr[j]>val){
+				j--;
+			}
+			
+			if(i <= j){
+				swap(i, j);
+				i++;
+				j++;
+			}
+		}
+		
+		if(low < j){ quickS(i, j);};
+		if(last > i){ quickS(i, j);};
+	}
+	
+	public static void quickS(){
+		int i , j, middle, val;
+		int low = 0, last;
+		
+		
+		last = arr.length -1;
+		middle = (low + last)/2;
+		
+		val = arr[middle];
+		i = low;
+		j = last;
+		
+		while (i <= j) {
+			while(arr[i] < val){
+				i++;
+			}
+
+			while(arr[j]>val){
+				j--;
+			}
+			
+			if(i <= j){
+				swap(i, j);
+				i++;
+				j++;
+			}
+		}
+		
+		if(low < j){ quickS(i, j);};
+		if(last > i){ quickS(i, j);};
 		
 		
 		
 	}
 	
 	public static void main(String[] args) {
-		ArrayList<Integer> arr = new ArrayList<Integer>();
-		arr.add(3);
-		arr.add(1);
-		arr.add(4);
-		arr.add(5);
-		arr.add(7);
-		arr.add(2);
-		quickS(arr);
+		quickS();
+		
+		
+		for(int i:arr){
+			System.out.println(i);
+		}
 	}
 }

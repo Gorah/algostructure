@@ -11,11 +11,9 @@ public class QuickSort {
 	}
 	
 	public static void quickS(int low, int last){
-		int i , j, middle, val;
+		int i , j, val;
 		
-		middle = (low + last)/2;
-		
-		val = arr[middle];
+		val = arr[(low + last)/2];
 		i = low;
 		j = last;
 		
@@ -39,43 +37,13 @@ public class QuickSort {
 		if(last > i){ quickS(i, j);};
 	}
 	
-	public static void quickS(){
-		int i , j, middle, val;
-		int low = 0, last;
 		
-		
-		last = arr.length -1;
-		middle = (low + last)/2;
-		
-		val = arr[middle];
-		i = low;
-		j = last;
-		
-		while (i <= j) {
-			while(arr[i] < val){
-				i++;
-			}
-
-			while(arr[j]>val){
-				j--;
-			}
-			
-			if(i <= j){
-				swap(i, j);
-				i++;
-				j++;
-			}
-		}
-		
-		if(low < j){ quickS(i, j);};
-		if(last > i){ quickS(i, j);};
-		
-		
-		
-	}
-	
 	public static void main(String[] args) {
-		quickS();
+		int low, last;
+                
+                low = 0;
+                last = arr.length -1;
+                quickS(low, last);
 		
 		
 		for(int i:arr){
